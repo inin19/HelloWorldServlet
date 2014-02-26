@@ -24,6 +24,7 @@ import com.microstrategy.web.objects.WebReportInstance;
 import com.microstrategy.web.objects.WebReportSource;
 import com.microstrategy.web.objects.WebRow;
 import com.microstrategy.web.objects.WebRowValue;
+import com.microstrategy.webapi.EnumDSSXMLObjectTypes;
 
 /**
  * Servlet implementation class HelloWorld

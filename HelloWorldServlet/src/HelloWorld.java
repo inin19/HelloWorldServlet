@@ -2,7 +2,6 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.microstrategy.utils.Tree;
-import com.microstrategy.web.objects.WebDSN;
-import com.microstrategy.web.objects.WebFolder;
 import com.microstrategy.web.objects.WebGridHeaders;
 import com.microstrategy.web.objects.WebGridRows;
 import com.microstrategy.web.objects.WebHeader;
@@ -28,10 +24,6 @@ import com.microstrategy.web.objects.WebReportInstance;
 import com.microstrategy.web.objects.WebReportSource;
 import com.microstrategy.web.objects.WebRow;
 import com.microstrategy.web.objects.WebRowValue;
-import com.microstrategy.web.objects.WebSearch;
-import com.microstrategy.webapi.EnumDSSXMLObjectTypes;
-import com.microstrategy.webapi.EnumDSSXMLSearchDomain;
-import com.microstrategy.webapi.EnumDSSXMLSearchFlags;
 
 /**
  * Servlet implementation class HelloWorld

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.api.services.mirror.model.TimelineItem;
 import com.microstrategy.web.objects.WebGridHeaders;
 import com.microstrategy.web.objects.WebGridRows;
 import com.microstrategy.web.objects.WebHeader;
@@ -126,6 +127,24 @@ public class HelloWorld extends HttpServlet {
 			closeSession(serverSession);
             
 			
+			 TimelineItem timelineItem = new TimelineItem();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		} catch (WebObjectsException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -142,7 +161,7 @@ public class HelloWorld extends HttpServlet {
 		  
 		  factory = WebObjectsFactory.getInstance();
 		  serverSession = factory.getIServerSession();
-		  serverSession.setServerName("inin");
+		  serverSession.setServerName("IN-PC");
 		  serverSession.setServerPort(0);
 		  serverSession.setProjectName("MicroStrategy Tutorial"); //just a project to connect to, not the cache we're going to clear (see above for projects to clear)
 		  serverSession.setLogin("Administrator");

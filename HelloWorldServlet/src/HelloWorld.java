@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.api.services.mirror.model.NotificationConfig;
 import com.google.api.services.mirror.model.TimelineItem;
 import com.microstrategy.web.objects.WebGridHeaders;
 import com.microstrategy.web.objects.WebGridRows;
@@ -58,7 +59,7 @@ public class HelloWorld extends HttpServlet {
 		out.println("<p>doGet<p>");
 		
 		try {
-			WebObjectInfo reportObject = lObjectSource.getObject("256263D142248D56446F3A80AD100C06",EnumDSSXMLObjectTypes.DssXmlTypeReportDefinition,true);
+			WebObjectInfo reportObject = lObjectSource.getObject("0A91A86D4EDB361ACB8B00BCDECFC00B",EnumDSSXMLObjectTypes.DssXmlTypeReportDefinition,true);
 			
 //			String a = lReportObjectInfo.getName();
 //			
@@ -88,20 +89,21 @@ public class HelloWorld extends HttpServlet {
 			
 			
 			WebGridRows gridRows=reportGrid.getGridRows();
-			WebGridHeaders columnHeaders=reportGrid.getColumnHeaders();
+//			WebGridHeaders columnHeaders=reportGrid.getColumnHeaders();
+//			
+//			for (int i=0;i<columnHeaders.size();i++) {
+//			    for (int j=0;j<reportGrid.getRowTitles().size();j++) {
+//		
+//			    }
+//			    WebHeaders headers=columnHeaders.get(i);
+//			    for (int j=0;j<headers.size();j++) {
+//			    	WebHeader header=headers.get(j);
+//			    	out.println(header.getDisplayName());
+//			    }
+//			    
+//			}
 			
-			for (int i=0;i<columnHeaders.size();i++) {
-			    for (int j=0;j<reportGrid.getRowTitles().size();j++) {
-		
-			    }
-			    WebHeaders headers=columnHeaders.get(i);
-			    for (int j=0;j<headers.size();j++) {
-			    	WebHeader header=headers.get(j);
-			    	out.println(header.getDisplayName());
-			    }
-			    
-			}
-			
+			StringBuilder str = new StringBuilder();
 			
 			
 			for (int i=0;i<gridRows.size();i++) {
@@ -110,13 +112,22 @@ public class HelloWorld extends HttpServlet {
 	            for (int j=0;j<rowHeaders.size();j++) {
 	                WebHeader header=rowHeaders.get(j);
 	                
+	                
 	                out.print(header.getDisplayName()+"\t");
 	                
+	                
+	                str.append((header.getDisplayName()+"\t"));
 	            }
+
+                
+
+	            
 	            for (int j=0;j<row.size();j++) {
 	                WebRowValue value=row.get(j);
 	               
 	                out.print(value.getValue()+"\t");
+	                
+	                str.append((value.getValue()+"\t"));
 	            }
 	            
 	        }
@@ -127,15 +138,14 @@ public class HelloWorld extends HttpServlet {
 			closeSession(serverSession);
             
 			
-			 TimelineItem timelineItem = new TimelineItem();
+			TimelineItem timelineItem = new TimelineItem();			
+			timelineItem.setText(reportObject.getName());
+			
+			timelineItem.setText(str.toString());
 			
 			
-			
-			
-			
-			
-			
-			
+		    // Triggers an audible tone when the timeline item is received
+		    timelineItem.setNotification(new NotificationConfig().setLevel("DEFAULT"));
 			
 			
 			
